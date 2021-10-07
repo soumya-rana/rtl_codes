@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 07.10.2021 07:27:26
+// Create Date: 07.10.2021 07:02:05
 // Design Name: 
-// Module Name: flip_flop_tester
+// Module Name: flip_flop
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,20 +20,12 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module flip_flop_tester();
-    reg D,en;
-    wire Q,clk,clock;
-    flip_flop dut(.D(D),.Q(Q),.clk(clk),.en(en));
-    osc driver(.clock(clock));
-    assign clk=clock;
-    initial
-    begin
-        D=1'b0; en=1'b0;
-        #10
-        D=1'b1; en=1'b0;
-        #10
-        D=1'b1; en=1'b1;
-        #20
-        $finish;
-    end
+module flip_flop(D,Q,clk,en);
+    input D,clk,en;
+    output reg Q;
+    always@(posedge clk) 
+        if(~en)
+            Q=D;
+        else
+            Q=0;
 endmodule
