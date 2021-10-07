@@ -1,11 +1,11 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: Indian Institute of Science, Bengaluru
+// Engineer: Soumya Kanta Rana
 // 
-// Create Date: 07.10.2021 07:49:34
+// Create Date: 06.10.2021 20:30:52
 // Design Name: 
-// Module Name: osc
+// Module Name: full_adder
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,13 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module osc(clock);
-    output reg clock;
-    integer delay;
-    always begin
-        clock=0;
-        #6;
-        clock=1;
-        #6;
-    end
+module full_adder(
+    output S,
+    output Co,
+    input A,
+    input B,
+    input C);
+    //wire A,B,C,S,Co;
+    assign S=(A^B)^C;
+    assign Co=(A&B)|(B&C)|(C&A);
 endmodule
